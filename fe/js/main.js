@@ -1,1 +1,4 @@
-﻿// Your code here!
+﻿$("#searchButton").click(function () {
+    alert("Handler for .click() called.");
+});
+
