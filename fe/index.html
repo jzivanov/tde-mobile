@@ -16,10 +16,26 @@
 <body>
     <div class="sidenav">
         <a href="" align="center"><b>TDE<br> mobile shop</b></a><hr>
-        <ul type="none">
-            <li align="left"><button class="button" data-toggle="modal" data-target="#exampleModal"><b>Prijem robe</b></button></li>
-        </ul>
+        <div class="dropdown">
+            <button class="dropbtn"><b>Prijem robe</b> </button>
+            <div class="dropdown-content">
+                <a href="#"  data-toggle="modal" data-target="#exampleModal">Mobilni telefon</a>
+                <a href="#">RTV</a>
+                <a href="#">Racunar</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdownbtn"><b>Izdati</b> </button>
+            <div class="dropdown-content">
+                <a href="#" data-toggle="" data-target="">Mobilni telefon</a>
+                <a href="#">RTV</a>
+                <a href="#">Racunar</a>
+            </div>
+        </div>
+
+
     </div>
+
     <div class="topnav">
         <div class="search-container">
 
@@ -28,6 +44,8 @@
 
 
         </div>
+
+
     </div>
     <div class="modal" tabindex="-1" role="dialog" id="exampleModal"> 
         <div class="modal-dialog" role="document">
@@ -43,36 +61,37 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer01">Ime</label>
-                                <input type="text" class="form-control is-valid" id="validationServer01" required>
+                                <input type="text" class="form-control " id="ime" required="">
 
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer02">Prezime</label>
-                                <input type="text" class="form-control is-valid" id="validationServer02" required>
+                                <input type="text" class="form-control" id="prezime" required="">
 
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer03">Broj telefona</label>
-                                <input type="text" class="form-control is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required>
+                                <input type="text" class="form-control " id="brtel"  required="">
 
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04">Telefon</label>
-                                <select class="custom-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required>
+                                <select class="custom-select" id="tel"  required="">
                                     <option selected disabled value="">Choose...</option>
                                     <option>Samsung</option>
                                     <option>Alcatel</option>
                                     <option>LG</option>
                                     <option>Nokia</option>
                                     <option>BlackBerry</option>
+                                    <option>Iphone</option>
                                 </select>
 
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer05">Model telefona</label>
-                                <input type="text" class="form-control is-invalid" id="validationServer05" aria-describedby="validationServer05Feedback" required>
+                                <input type="text" class="form-control" id="modeltel" aria-describedby="validationServer05Feedback" required>
 
                             </div>
                         </div>
@@ -80,19 +99,19 @@
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="validationCustom01">IMEI</label>
-                                    <input type="text" class="form-control" id="validationCustom01"  required>
+                                    <input type="text" class="form-control" id="IMEI"  required>
                                     </div>
                                 
                         <div class="col-md-6 mb-3">
                             <label for="validationServer02">Cena</label>
-                            <input type="text" class="form-control is-valid" id="validationServer02"  required>
+                            <input type="text" class="form-control" id="cena"  required>
                             </div>
                                 </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Usluga/kvar</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input id="uslugaKvar" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                            
                         </div>
                         
@@ -101,24 +120,51 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     
 </form>
-                   
+                                     
   
             </div>
         </div>
     </div>
  </div>
+    <table>
+        <tr>
+            <td>Ime</td>
+            <td>Prezime</td>
+            <td>Broj telefona</td>
+            <td>Telefon</td>
+            <td>Model telefona</td>
+            <td>IMEI</td>
+            <td>Cena</td>
+            <td>Usluga/kvar</td>
+        </tr>
+    </table>
+
     <script>
-        $("#saveButton").click(function () {
-            console.log("Handler for .click() called.");
-            $.post("http://localhost:3000/save",
-        {
-            name: "Donald Duck",
-            city: "Duckburg"
-        },
-        function (data, status) {
-            console.log("Data: " + data + "\nStatus: " + status);
-        });
-        });
+
+        $(document).ready(function () {
+            $("#saveButton").click(function () {
+
+                $.post("http://localhost:3000/save",
+               {
+                   firstName: $("#ime").val(),
+                   lastName: $("#prezime").val(),
+                   phoneNumber: $("#brtel").val(),
+                   phone: $("#tel").val(),
+                   phoneModel: $("#modeltel").val(),
+                   IMEI: $("#IMEI").val(),
+                   price: $("#cena").val(),
+                   usluga: $("#uslugaKvar").val()
+
+                   }
+               )},
+               function (data, status) {
+                   console.log("Data: " + data + "\nStatus: " + status);
+               });
+            });
+
+            });
+      
     </script>
+
 </body>
 </html>
