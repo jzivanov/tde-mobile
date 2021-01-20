@@ -14,6 +14,5 @@ function getAll() {
 function save(newItem){
     newItem.id=uuidv4();
     items.push(newItem);
-
 }
 module.exports = {dbGetById:getById, save, getAll }

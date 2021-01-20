@@ -1,170 +1,209 @@
-﻿<!doctype html>
+﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet"  type="text/css" href="css/default.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"  crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
 
     <title>TDE mobile shop</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="sidenav">
-        <a href="" align="center"><b>TDE<br> mobile shop</b></a><hr>
-        <div class="dropdown">
-            <button class="dropbtn"><b>Prijem robe</b> </button>
-            <div class="dropdown-content">
-                <a href="#"  data-toggle="modal" data-target="#exampleModal">Mobilni telefon</a>
-                <a href="#">RTV</a>
-                <a href="#">Racunar</a>
-            </div>
+      <a href="" align="center"
+        ><b
+          >TDE<br />
+          mobile shop</b
+        ></a
+      >
+      <hr />
+      <div class="dropdown">
+        <button class="dropbtn"><b>Prijem robe</b></button>
+        <div class="dropdown-content">
+          <a href="#" data-toggle="modal" data-target="#exampleModal"
+            >Mobilni telefon</a
+          >
+          <a href="#">RTV</a>
+          <a href="#">Racunar</a>
         </div>
-        <div class="dropdown">
-            <button class="dropdownbtn"><b>Izdati</b> </button>
-            <div class="dropdown-content">
-                <a href="#" data-toggle="" data-target="">Mobilni telefon</a>
-                <a href="#">RTV</a>
-                <a href="#">Racunar</a>
-            </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdownbtn"><b>Izdati</b></button>
+        <div class="dropdown-content">
+          <a href="#" data-toggle="" data-target="">Mobilni telefon</a>
+          <a href="#">RTV</a>
+          <a href="#">Racunar</a>
         </div>
-
-
+      </div>
     </div>
 
     <div class="topnav">
-        <div class="search-container">
-
-                <input type="text" placeholder="Search" name="search">
-                <button id="searchButton" type="submit"><i class="fa fa-search"></i></button>
-
-
-        </div>
-
-
+      <div class="search-container">
+        <input type="text" placeholder="Search" name="search" />
+        <button id="searchButton" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
     </div>
-    <div class="modal" tabindex="-1" role="dialog" id="exampleModal"> 
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Prijem robe</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+    <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Prijem robe</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="validationServer01">Ime</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="ime"
+                    required=""
+                  />
                 </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="validationServer01">Ime</label>
-                                <input type="text" class="form-control " id="ime" required="">
+                <div class="col-md-6 mb-3">
+                  <label for="validationServer02">Prezime</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="prezime"
+                    required=""
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="validationServer03">Broj telefona</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="brtel"
+                    required=""
+                  />
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="validationServer04">Telefon</label>
+                  <select class="custom-select" id="tel" required="">
+                    <option selected disabled value="">Choose...</option>
+                    <option>Samsung</option>
+                    <option>Alcatel</option>
+                    <option>LG</option>
+                    <option>Nokia</option>
+                    <option>BlackBerry</option>
+                    <option>Iphone</option>
+                  </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="validationServer05">Model telefona</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="modeltel"
+                    aria-describedby="validationServer05Feedback"
+                    required
+                  />
+                </div>
+              </div>
 
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="validationServer02">Prezime</label>
-                                <input type="text" class="form-control" id="prezime" required="">
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="validationCustom01">IMEI</label>
+                  <input type="text" class="form-control" id="IMEI" required />
+                </div>
 
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="validationServer03">Broj telefona</label>
-                                <input type="text" class="form-control " id="brtel"  required="">
+                <div class="col-md-6 mb-3">
+                  <label for="validationServer02">Cena</label>
+                  <input type="text" class="form-control" id="cena" required />
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Usluga/kvar</span>
+                </div>
+                <input
+                  id="uslugaKvar"
+                  type="text"
+                  class="form-control"
+                  aria-label="Amount (to the nearest dollar)"
+                />
+              </div>
 
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="validationServer04">Telefon</label>
-                                <select class="custom-select" id="tel"  required="">
-                                    <option selected disabled value="">Choose...</option>
-                                    <option>Samsung</option>
-                                    <option>Alcatel</option>
-                                    <option>LG</option>
-                                    <option>Nokia</option>
-                                    <option>BlackBerry</option>
-                                    <option>Iphone</option>
-                                </select>
-
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="validationServer05">Model telefona</label>
-                                <input type="text" class="form-control" id="modeltel" aria-describedby="validationServer05Feedback" required>
-
-                            </div>
-                        </div>
-     
-                            <div class="form-row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="validationCustom01">IMEI</label>
-                                    <input type="text" class="form-control" id="IMEI"  required>
-                                    </div>
-                                
-                        <div class="col-md-6 mb-3">
-                            <label for="validationServer02">Cena</label>
-                            <input type="text" class="form-control" id="cena"  required>
-                            </div>
-                                </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Usluga/kvar</span>
-                            </div>
-                            <input id="uslugaKvar" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                           
-                        </div>
-                        
-                        
-                            <button id="saveButton" class="btn btn-primary" type="submit">Save</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    
-</form>
-                                     
-  
-            </div>
+              <button id="saveButton" class="btn btn-primary" type="submit">
+                Save
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
- </div>
     <table>
+      <thead>
         <tr>
-            <td>Ime</td>
-            <td>Prezime</td>
-            <td>Broj telefona</td>
-            <td>Telefon</td>
-            <td>Model telefona</td>
-            <td>IMEI</td>
-            <td>Cena</td>
-            <td>Usluga/kvar</td>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Broj telefona</th>
+          <th>Telefon</th>
+          <th>Model telefona</th>
+          <th>IMEI</th>
+          <th>Cena</th>
+          <th>Usluga/kvar</th>
         </tr>
+      </thead>
+      <tr class="table_items" data-toggle="modal" data-target="#exampleModal" >
+        <td hidden>123123123</td>
+        <td item_type="firstName">Jovan</td>
+        <td>Zivanov</td>
+        <td>123123123</td>
+        <td>Alcatel</td>
+        <td>X11</td>
+        <td>123123123123</td>
+        <td>300.00 RSD</td>
+        <td>bla bla bla</td>
+      </tr>
     </table>
-
-    <script>
-
-        $(document).ready(function () {
-            $("#saveButton").click(function () {
-
-                $.post("http://localhost:3000/save",
-               {
-                   firstName: $("#ime").val(),
-                   lastName: $("#prezime").val(),
-                   phoneNumber: $("#brtel").val(),
-                   phone: $("#tel").val(),
-                   phoneModel: $("#modeltel").val(),
-                   IMEI: $("#IMEI").val(),
-                   price: $("#cena").val(),
-                   usluga: $("#uslugaKvar").val()
-
-                   }
-               )},
-               function (data, status) {
-                   console.log("Data: " + data + "\nStatus: " + status);
-               });
-            });
-
-            });
-      
-    </script>
-
-</body>
+  </body>
 </html>
