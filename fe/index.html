@@ -180,7 +180,7 @@
         </div>
       </div>
     </div>
-    <table>
+    <table id="myTable">
       <thead>
         <tr>
           <th>Ime</th>
@@ -193,17 +193,20 @@
           <th>Usluga/kvar</th>
         </tr>
       </thead>
+
       <tr class="table_items" data-toggle="modal" data-target="#exampleModal" >
         <td hidden>123123123</td>
         <td item_type="firstName">Jovan</td>
-        <td>Zivanov</td>
-        <td>123123123</td>
-        <td>Alcatel</td>
-        <td>X11</td>
-        <td>123123123123</td>
-        <td>300.00 RSD</td>
-        <td>bla bla bla</td>
+        <td item_type="lastName">Zivanov</td>
+        <td item_type="phoneNumber">123123123</td>
+        <td item_type="phone">Alcatel</td>
+        <td item_type="phoneModel">X11</td>
+        <td item_type="IMEI">123123123123</td>
+        <td item_type="price">300.00 RSD</td>
+        <td item_type="usluga">bla bla bla</td>
       </tr>
+
     </table>
+      <button id="deleteButton" class="button"><b>Delete row </b></button>
   </body>
 </html>
