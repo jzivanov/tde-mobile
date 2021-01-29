@@ -4,35 +4,38 @@
 $(document).ready(function () {
   $('.table_items').click(function () {
     console.log(this);
-    const $row = $(this).closest("tr"),       
-      $tds = $row.find("td");             
+    const $row = $(this).closest("tr"),
+      $tds = $row.find("td");
 
     $.each($tds, function () {
-        const item_type = $(this).attr("item_type");
-        if (typeof item_type !== typeof undefined && item_type !== false) {
-            if (item_type === 'firstName') {
+        const data_field = $(this).attr("data-field");
+        if (typeof data_field !== typeof undefined && data_field !== false) {
+            if (data_field === 'id') {
+              $('#id').val($(this).html());
+            }
+            if (data_field === 'firstName') {
                 $('#ime').val($(this).html())
             }
-            if (item_type === 'lastName') {
+            if (data_field === 'lastName') {
                 $('#prezime').val($(this).html())
             }
-            if (item_type === 'phoneNumber') {
+            if (data_field === 'phoneNumber') {
                 $('#brtel').val($(this).html())
             }
-            if (item_type === 'phone') {
+            if (data_field === 'brand') {
                 $('#tel').val($(this).html())
             }
-            if (item_type === 'phoneModel') {
+            if (data_field === 'model') {
                 $('#modeltel').val($(this).html())
             }
-            if (item_type === 'IMEI') {
+            if (data_field === 'imei') {
                 $('#IMEI').val($(this).html())
             }
-            if (item_type === 'price') {
+            if (data_field === 'price') {
                 $('#cena').val($(this).html())
             }
-            if (item_type === 'usluga') {
-                $('#uslugaKvar').val($(this).html())
+            if (data_field === 'service') {
+                $('#service').val($(this).html())
             }
         }
     });
@@ -49,43 +52,20 @@ $(document).ready(function () {
         phoneModel: $("#modeltel").val(),
         IMEI: $("#IMEI").val(),
         price: $("#cena").val(),
-        usluga: $("#uslugaKvar").val()
+        service: $("#service").val()
       }),
       headers: {
         "Content-Type": 'application/json'
       },
-      dataType: 'json',
-      success: function (data) {
-        console.info(data);
-      }
+    }).done(data => {
+      console.log('success');
+      console.log(data);
+      console.log(JSON.stringify($('#myTable').bootstrapTable('getRowByUniqueId', $('#id').val())));
+    }).fail(error => {
+      console.log('error');
+      console.log(error)
     });
   });
-});
-$("#saveButton").click(function () {
-    var tbody = $('#myTable').children('tbody');
-    var table = tbody.length ? tbody : $('#myTable');
-    var row = '<tr>'+
-        '<td>{{Ime}}</td>'+
-        '<td>{{Prezime}}</td>'+
-        '<td>{{Broj telefon}}</td>'+
-        '<td>{{Telefon}}</td>'+
-        '<td>{{Model}}</td>'+
-        '<td>{{IMEI}}</td>'+
-        '<td>{{Cena}}</td>'+
-        '<td>{{Usluga/kvar}}</td>'+
-
-
-
-    table.append(row.compose({
-        'Ime': $("#ime"),
-        'Prezime': $("#prezime"),
-        'Broj telefona': $("#brtel"),
-        'Telefon': $("#tel"),
-        'Model':$("#modelTel"),
-        'IMEI':$("#IMEI"),
-        'Cena':$("#cena"),
-        'Usluga/kvar':$("#usluga/kvar"),
-    }));
 });
 $('#myTable').on('click', buttonSelector='deleteButton', function () {
     $(this).closest('tr').remove();

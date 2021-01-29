@@ -18,7 +18,7 @@ app.get('/:id', (req, res) => {
 app.post("/", (req,res) => {
     console.log('Got body:', req.body);
     save(req.body);
-    res.sendStatus(200);
+    res.json(req.body).status(200);
 });
 app.put('/:id', (req, res) => {
 });
