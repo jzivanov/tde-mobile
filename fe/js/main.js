@@ -1,72 +1,113 @@
 ﻿$("#searchButton").click(function () {
     alert("Handler for .click() called.");
 });
-$(document).ready(function () {
-  $('.table_items').click(function () {
-    console.log(this);
-    const $row = $(this).closest("tr"),
-      $tds = $row.find("td");
 
-    $.each($tds, function () {
-        const data_field = $(this).attr("data-field");
-        if (typeof data_field !== typeof undefined && data_field !== false) {
-            if (data_field === 'id') {
-              $('#id').val($(this).html());
-            }
-            if (data_field === 'firstName') {
-                $('#ime').val($(this).html())
-            }
-            if (data_field === 'lastName') {
-                $('#prezime').val($(this).html())
-            }
-            if (data_field === 'phoneNumber') {
-                $('#brtel').val($(this).html())
-            }
-            if (data_field === 'brand') {
-                $('#tel').val($(this).html())
-            }
-            if (data_field === 'model') {
-                $('#modeltel').val($(this).html())
-            }
-            if (data_field === 'imei') {
-                $('#IMEI').val($(this).html())
-            }
-            if (data_field === 'price') {
-                $('#cena').val($(this).html())
-            }
-            if (data_field === 'service') {
-                $('#service').val($(this).html())
-            }
-        }
-    });
+// cb represents a callback, have a look at https://developer.mozilla.org/en-US/docs/Glossary/Callback_function
+function sendSaveRequest(cb) {
+  console.log('sending save request');
+
+  $.ajax({
+    url: 'http://localhost:3000/',
+    type: 'post',
+    data: JSON.stringify({
+      firstName: $("#firstName").val(),
+      lastName: $("#lastName").val(),
+      phoneNumber: $("#phoneNumber").val(),
+      brand: $("#brand").val(),
+      model: $("#model").val(),
+      imei: $("#imei").val(),
+      price: $("#price").val(),
+      service: $("#service").val()
+    }),
+    headers: {
+      "Content-Type": 'application/json'
+    },
+  }).done(data => {
+    cb(data, undefined);
+  }).fail(error => {
+    cb(undefined, error);
+  });
+}
+function sendDeleteRequest(id) {
+  // TODO implement sending delete request as well as deleting on be side
+  console.log('sending delete request');
+}
+function save(dataTable) {
+  // Sending a function as a parameter
+  sendSaveRequest((data, error) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(data);
+      dataTable.row.add(
+        {
+          id: data.id,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          phoneNumber: data.phoneNumber,
+          brand: data.brand,
+          model: data.model,
+          imei: data.imei,
+          price: data.price,
+          service: data.service
+        }).draw();
+    }
+  });
+}
+
+function deleteItem(dataTable, id) {
+  console.log(`delete item with id: ${id}`);
+  //TODO send request
+  const row = dataTable.row(`#${id}`).node();
+  row.remove();
+}
+
+$(document).ready(function () {
+  // Create new DataTable on #itemTable
+  const dataTable = $('#itemTable').DataTable({
+    paging: false,
+    searching: false,
+    ordering: false,
+    rowId: 'id',
+    columns: [
+      { data: 'firstName' },
+      { data: 'lastName' },
+      { data: 'phoneNumber' },
+      { data: 'brand' },
+      { data: 'model' },
+      { data: 'imei' },
+      { data: 'price' },
+      { data: 'service' }
+    ]
+  });
+  let selectedRowId = undefined;
+
+  $('#itemTable tbody').on( 'click', 'tr', function () {
+    const row = dataTable.row( this ).data();
+    selectedRowId = row.id;
+    if (selectedRowId !== undefined) {
+      $('#firstName').val(row.firstName);
+      $('#lastName').val(row.lastName);
+      $('#phoneNumber').val(row.phoneNumber);
+      $('#brand').val(row.brand);
+      $('#model').val(row.model);
+      $('#imei').val(row.imei);
+      $('#price').val(row.price);
+      $('#service').val(row.service);
+
+      $("#deleteButton").removeClass("invisible").addClass("visible");
+      $('#exampleModal').modal('show');
+    }
   });
   $("#saveButton").click(function () {
-    $.ajax({
-      url: 'http://localhost:3000/',
-      type: 'post',
-      data: JSON.stringify({
-        firstName: $("#ime").val(),
-        lastName: $("#prezime").val(),
-        phoneNumber: $("#brtel").val(),
-        phone: $("#tel").val(),
-        phoneModel: $("#modeltel").val(),
-        IMEI: $("#IMEI").val(),
-        price: $("#cena").val(),
-        service: $("#service").val()
-      }),
-      headers: {
-        "Content-Type": 'application/json'
-      },
-    }).done(data => {
-      console.log('success');
-      console.log(data);
-      console.log(JSON.stringify($('#myTable').bootstrapTable('getRowByUniqueId', $('#id').val())));
-    }).fail(error => {
-      console.log('error');
-      console.log(error)
-    });
+    save(dataTable);
   });
-});
-$('#myTable').on('click', buttonSelector='deleteButton', function () {
-    $(this).closest('tr').remove();
+  $("#deleteButton").click(() => {
+    deleteItem(dataTable, selectedRowId);
+  });
+  $('#closeButton').click(() => {
+    console.log('close');
+    $("#deleteButton").removeClass("visible").addClass("invisible");
+    // Delete input values
+  });
 });
