@@ -28,9 +28,42 @@ function sendSaveRequest(cb) {
     cb(undefined, error);
   });
 }
+
+function sendUpdateRequest() {
+
+}
 function sendDeleteRequest(id) {
   // TODO implement sending delete request as well as deleting on be side
   console.log('sending delete request');
+}
+function getAll(cb) {
+  // TODO get all items from be
+}
+function update(dataTable, id) {
+  console.log("update")
+
+  $.ajax({
+    url: `http://localhost:3000/` + id,
+    type: 'put',
+    data: JSON.stringify({
+      firstName: $("#firstName").val(),
+      lastName: $("#lastName").val(),
+      phoneNumber: $("#phoneNumber").val(),
+      brand: $("#brand").val(),
+      model: $("#model").val(),
+      imei: $("#imei").val(),
+      price: $("#price").val(),
+      service: $("#service").val()
+    }),
+    headers: {
+      "Content-Type": 'application/json'
+    },
+  }).done(data => {
+    // TODO update item in table
+
+  }).fail(error => {
+
+  });
 }
 function save(dataTable) {
   // Sending a function as a parameter
@@ -57,7 +90,7 @@ function save(dataTable) {
 
 function deleteItem(dataTable, id) {
   console.log(`delete item with id: ${id}`);
-  //TODO send request
+  sendDeleteRequest(id);
   const row = dataTable.row(`#${id}`).node();
   row.remove();
 }
@@ -85,6 +118,7 @@ $(document).ready(function () {
   $('#itemTable tbody').on( 'click', 'tr', function () {
     const row = dataTable.row( this ).data();
     selectedRowId = row.id;
+    console.log(selectedRowId)
     if (selectedRowId !== undefined) {
       $('#firstName').val(row.firstName);
       $('#lastName').val(row.lastName);
@@ -101,6 +135,9 @@ $(document).ready(function () {
   });
   $("#saveButton").click(function () {
     save(dataTable);
+  });
+  $("#updateButton").click(() => {
+    update(dataTable, selectedRowId)
   });
   $("#deleteButton").click(() => {
     deleteItem(dataTable, selectedRowId);

@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { dbGetById, save, getAll} = require('./dataBaseservice');
+const { dbGetById, save, getAll, update} = require('./dataBaseservice');
 
 app.use(cors())
 app.use(bodyParser.json());
@@ -21,6 +21,9 @@ app.post("/", (req,res) => {
     res.json(req.body).status(200);
 });
 app.put('/:id', (req, res) => {
+  console.log(req.params.id)
+
+  update(req.body, req.params.id);
 });
 app.delete('/:id',(req,res) => {
 

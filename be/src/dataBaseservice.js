@@ -15,4 +15,10 @@ function save(newItem){
     newItem.id=uuidv4();
     items.push(newItem);
 }
-module.exports = {dbGetById:getById, save, getAll }
+function update(updateItem, id) {
+  console.log('update item with id' + id + " and body: " + JSON.stringify(updateItem));
+
+  const item = getById(id);
+  item['firstName'] = updateItem.firstName;
+}
+module.exports = {dbGetById:getById, save, getAll, update }
