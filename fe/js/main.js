@@ -114,9 +114,11 @@ $(document).ready(function () {
     ]
   });
   let selectedRowId = undefined;
+  let selectedRow = undefined;
 
   $('#itemTable tbody').on( 'click', 'tr', function () {
     const row = dataTable.row( this ).data();
+    selectedRow = dataTable.row(this);
     selectedRowId = row.id;
     console.log(selectedRowId)
     if (selectedRowId !== undefined) {
@@ -137,7 +139,17 @@ $(document).ready(function () {
     save(dataTable);
   });
   $("#updateButton").click(() => {
-    update(dataTable, selectedRowId)
+    update(dataTable, selectedRowId);
+    selectedRow.data({
+      firstName: $("#firstName").val(),
+      lastName: $("#lastName").val(),
+      phoneNumber: $("#phoneNumber").val(),
+      brand: $("#brand").val(),
+      model: $("#model").val(),
+      imei: $("#imei").val(),
+      price: $("#price").val(),
+      service: $("#service").val()
+    }).draw();
   });
   $("#deleteButton").click(() => {
     deleteItem(dataTable, selectedRowId);
