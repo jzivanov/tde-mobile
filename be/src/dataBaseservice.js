@@ -20,5 +20,12 @@ function update(updateItem, id) {
 
   const item = getById(id);
   item['firstName'] = updateItem.firstName;
+  item['lastName'] = updateItem.lastName;
+  item['phoneNumber'] = updateItem.phoneNumber;
+  item['brand'] = updateItem.brand;
+  item['model'] = updateItem.model;
+  item['imei'] = updateItem.imei;
+  item['price'] = updateItem.price;
+  item['service'] = updateItem.service;
 }
 module.exports = {dbGetById:getById, save, getAll, update }
