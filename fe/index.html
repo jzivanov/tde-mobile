@@ -17,21 +17,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/main.js"></script>
 
-    <title>TDE mobile shop</title>
+    <title>TDE mobil</title>
   </head>
   <body>
     <div class="sidenav">
       <a href="" align="center"
         ><b
-          >TDE<br />
-          mobile shop</b
+          >TDE
+          Mobil</b
         ></a
       >
       <hr />
       <div class="dropdown">
         <button class="dropbtn"><b>Prijem robe</b></button>
         <div class="dropdown-content">
-          <a href="#" data-toggle="modal" data-target="#exampleModal"
+          <a href="#" data-toggle="modal" data-target="#exampleModal" id="device"
             >Mobilni telefon</a
           >
           <a href="#">RTV</a>
@@ -133,7 +133,7 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                  <label>Cena</label>
+                  <label>Ugovorena cena</label>
                   <input type="text" class="form-control" id="price" required />
                 </div>
               </div>
@@ -147,21 +147,15 @@
                   class="form-control"
                   aria-label="Amount (to the nearest dollar)"
                 />
+
+
               </div>
 
               <button id="saveButton" class="btn btn-primary">
                 Save
               </button>
-              <button id="updateButton" class="btn btn-info">
+              <button id="updateButton" class="btn btn-info invisible">
                 Update
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-                id="closeButton"
-              >
-                Close
               </button>
             <button type="button" class="btn btn-danger invisible" id="deleteButton">
               Delete

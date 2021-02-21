@@ -62,6 +62,7 @@ ul{
   left:201px;
   background-color:#b3b3cc;
   overflow: hidden;
+  z-index: 100;
 }
 
 
