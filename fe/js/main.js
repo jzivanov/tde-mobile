@@ -17,7 +17,9 @@ function sendSaveRequest(cb) {
       model: $("#model").val(),
       imei: $("#imei").val(),
       price: $("#price").val(),
-      service: $("#service").val()
+      service: $("#service").val(),
+      note: $("#note").val(),
+      date: $("#date").val()
     }),
     headers: {
       "Content-Type": 'application/json'
@@ -53,7 +55,9 @@ function update(dataTable, id) {
       model: $("#model").val(),
       imei: $("#imei").val(),
       price: $("#price").val(),
-      service: $("#service").val()
+      service: $("#service").val(),
+      note: $("#note").val(),
+      date: $("#date").val()
     }),
     headers: {
       "Content-Type": 'application/json'
@@ -82,8 +86,11 @@ function save(dataTable) {
           model: data.model,
           imei: data.imei,
           price: data.price,
-          service: data.service
+          service: data.service,
+          note: data.note,
+          date: data.date
         }).draw();
+      alert("Your data has been successfully saved");
     }
   });
 }
@@ -93,6 +100,7 @@ function deleteItem(dataTable, id) {
   sendDeleteRequest(id);
   const row = dataTable.row(`#${id}`).node();
   row.remove();
+
 }
 function resetFields(){
   console.log();
@@ -104,11 +112,17 @@ function resetFields(){
   $('#imei').val('');
   $('#price').val('');
   $('#service').val('');
+  $('#note').val('');
   $("#updateButton").removeClass("visible").addClass("invisible");
   $("#deleteButton").removeClass("visible").addClass("invisible");
 }
+function setDate(){
+  $('#date').datepicker();
+  $('#date').datepicker('setDate',new Date());
+}
 
 $(document).ready(function () {
+  setDate();
   // Create new DataTable on #itemTable
   const dataTable = $('#itemTable').DataTable({
     paging: false,
@@ -123,7 +137,9 @@ $(document).ready(function () {
       { data: 'model' },
       { data: 'imei' },
       { data: 'price' },
-      { data: 'service' }
+      { data: 'service' },
+      { data: 'note' },
+      { data: 'date'}
     ]
   });
   let selectedRowId = undefined;
@@ -143,6 +159,8 @@ $(document).ready(function () {
       $('#imei').val(row.imei);
       $('#price').val(row.price);
       $('#service').val(row.service);
+      $('#note').val(row.note);
+      $('#date').val(row.date);
       $("#updateButton").removeClass("invisible").addClass("visible");
       $("#deleteButton").removeClass("invisible").addClass("visible");
       $('#exampleModal').modal('show');
@@ -150,8 +168,16 @@ $(document).ready(function () {
     }
   });
   $("#saveButton").click(function () {
+    $('#exampleModal').modal('hide');
     save(dataTable);
     resetFields();
+
+
+
+  });
+  $("#device").click(function (){
+    $('#exampleModal').modal('show');
+
   });
   $("#updateButton").click(() => {
     update(dataTable, selectedRowId);
@@ -163,15 +189,20 @@ $(document).ready(function () {
       model: $("#model").val(),
       imei: $("#imei").val(),
       price: $("#price").val(),
-      service: $("#service").val()
+      service: $("#service").val(),
+      note: $("#note").val(),
+      date: $("#date").val()
     }).draw();
+    alert("Your data has been successfully updated");
     resetFields();
     $('#saveButton').show();
+    $('#exampleModal').modal('hide');
   });
   $("#deleteButton").click(() => {
     deleteItem(dataTable, selectedRowId);
     resetFields();
     $('#saveButton').show();
+    $('#exampleModal').modal('hide');
 
   });
   $('#closeButton').click(() => {
@@ -183,3 +214,5 @@ $(document).ready(function () {
     resetFields();
   });
 });
+
+

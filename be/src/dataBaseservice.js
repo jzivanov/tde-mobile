@@ -27,5 +27,7 @@ function update(updateItem, id) {
   item['imei'] = updateItem.imei;
   item['price'] = updateItem.price;
   item['service'] = updateItem.service;
+  item['note'] = updateItem.note;
+  item['date']=updateItem.date;
 }
 module.exports = {dbGetById:getById, save, getAll, update }
