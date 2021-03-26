@@ -100,8 +100,8 @@ function deleteItem(dataTable, id) {
   sendDeleteRequest(id);
   const row = dataTable.row(`#${id}`).node();
   row.remove();
-
 }
+
 function resetFields(){
   console.log();
   $('#firstName').val('');
@@ -116,9 +116,40 @@ function resetFields(){
   $("#updateButton").removeClass("visible").addClass("invisible");
   $("#deleteButton").removeClass("visible").addClass("invisible");
 }
+
 function setDate(){
   $('#date').datepicker();
   $('#date').datepicker('setDate',new Date());
+}
+
+function populateTable(dataTable) {
+  $.ajax({
+    url: 'http://localhost:3000/',
+    type: 'get',
+    headers: {
+      "Content-Type": 'application/json'
+    },
+  }).done(allData => {
+    console.log(allData);
+    allData.forEach(data => {
+      dataTable.row.add(
+        {
+          id: data.id,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          phoneNumber: data.phoneNumber,
+          brand: data.brand,
+          model: data.model,
+          imei: data.imei,
+          price: data.price,
+          service: data.service,
+          note: data.note,
+          date: data.date
+        }).draw();
+    });
+  }).fail(error => {
+    console.log('error while fetching data', error);
+  });
 }
 
 $(document).ready(function () {
@@ -144,7 +175,7 @@ $(document).ready(function () {
   });
   let selectedRowId = undefined;
   let selectedRow = undefined;
-
+  populateTable(dataTable);
   $('#itemTable tbody').on( 'click', 'tr', function () {
     const row = dataTable.row( this ).data();
     selectedRow = dataTable.row(this);
